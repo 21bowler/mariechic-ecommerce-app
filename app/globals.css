@@ -121,6 +121,29 @@ h1, h2, h3, h4, h5, h6 {
   /*font-weight: 700;*/
 }
 
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* scrollbar customization */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.4);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.6);
+}
+
 @utility glass {
     @apply bg-background rounded-md bg-clip-padding backdrop-filter backdrop-blur-xl border-b border-border;
 }
