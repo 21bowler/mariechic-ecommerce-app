@@ -152,6 +152,10 @@ html {
     @apply bg-linear-120 from-primary to-accent;
 }
 
+@utility container-base {
+    @apply container mx-auto px-4;
+}
+
 
 .dark {
 
