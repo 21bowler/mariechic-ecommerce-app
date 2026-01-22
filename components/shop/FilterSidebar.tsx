@@ -15,8 +15,6 @@ export default function FilterSidebar() {
 
   // Sync local state with URL immediately so the UI reflects the current filters
   const brandParams = searchParams.get("brand")?.split(",") || [];
-  const minPriceParam = Number(searchParams.get("minPrice")) || 0;
-  const maxPriceParam = Number(searchParams.get("maxPrice")) || 15000;
 
   // React hooks
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
