@@ -2,7 +2,7 @@ import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-export default function ShopLayout({
+export default function StorefrontLayout({
   children,
 }: {
   children: React.ReactNode;
