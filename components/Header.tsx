@@ -103,6 +103,7 @@ const Header = () => {
                       ? "text-primary"
                       : "text-muted-foreground",
                   )}
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {label}
                 </Link>
