@@ -63,25 +63,25 @@ const Header = () => {
           </nav>
 
           {/* Action Buttons*/}
-          <div className="flex items-center gap-1 sm:gap-2 shrink-0">
-            <button className="hidden sm:flex">
+          <div className="flex items-center gap-1 sm:gap-2 shrink-0 mr-1">
+            <button className="hidden sm:flex p-1">
               <Search size={20} />
             </button>
-            <button className="hidden sm:flex">
+            <button className="hidden sm:flex p-1">
               <Heart size={20} />
             </button>
             <Link href="/account">
-              <button>
+              <button className="p-1">
                 <User size={20} />
               </button>
             </Link>
             <button
-              className="relative p-1 cursor-pointer"
+              className="relative p-1 cursor-pointer overflow-visible"
               aria-label="Open cart"
               type="button"
             >
               <ShoppingBasket size={20} />
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-primary text-primary-foreground text-[10px] rounded-full flex items-center justify-center font-medium">
+              <span className="absolute top-0 right-0 w-4 h-4 bg-primary text-primary-foreground text-[10px] rounded-full flex items-center justify-center font-medium translate-x-1/4 -translate-y-1/4">
                 4
               </span>
             </button>
