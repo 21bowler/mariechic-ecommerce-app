@@ -18,12 +18,12 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
 
   return (
-    <header className="sticky glass top-0 z-50 border-b border-border/50">
+    <header className="sticky glass top-0 z-50 border-b border-border/50 overflow-x-clip">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-16 lg:h-20 min-w-0">
           {/* mobile menu button*/}
           <button
-            className="lg:hidden cursor-pointer p-2 transition-colors duration-200 hover:bg-gold/50 rounded-md"
+            className="lg:hidden cursor-pointer p-2 transition-colors duration-200 hover:bg-gold/50 rounded-md shrink-0"
             aria-label="Open menu"
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -32,8 +32,8 @@ const Header = () => {
           </button>
 
           {/* Logo*/}
-          <Link href="/">
-            <h1 className="text-xl lg:text-2xl font-semibold tracking-tight">
+          <Link href="/" className="min-w-0">
+            <h1 className="text-xl lg:text-2xl font-semibold tracking-tight truncate">
               <span className="text-primary">Marie</span>
               <span className="text-foreground">Chic</span>
             </h1>
@@ -63,7 +63,7 @@ const Header = () => {
           </nav>
 
           {/* Action Buttons*/}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2 shrink-0">
             <button className="hidden sm:flex">
               <Search size={20} />
             </button>
@@ -90,7 +90,7 @@ const Header = () => {
       </div>
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden px-4 border-t border-border/50 bg-background">
+        <div className="lg:hidden px-4 border-t border-border/50 bg-background overflow-x-clip">
           <nav className="container py-4 space-y-2">
             {navLinks.map(
               ({ label, href }: { label: string; href: string }) => (
