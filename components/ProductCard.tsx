@@ -8,7 +8,7 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ShoppingBasket } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { calculateDiscount, cn, formatPrice } from "@/lib/utils";
 
 interface ProductCardProps {
   product: Product;
@@ -16,19 +16,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("en-KE", {
-      style: "currency",
-      currency: "KES",
-      minimumFractionDigits: 0,
-    }).format(price);
-  };
-
-  const discount = product.originalPrice
-    ? Math.round(
-        ((product.originalPrice - product.price) / product.originalPrice) * 100,
-      )
-    : 0;
+  const discount = calculateDiscount(product.originalPrice, product.price);
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
