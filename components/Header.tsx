@@ -5,6 +5,9 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import { useCartStore } from "@/store/cart-store";
+import { motion } from "motion/react";
+import { Button } from "@/components/ui/button";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -15,6 +18,9 @@ const navLinks = [
 
 const Header = () => {
   const pathname = usePathname();
+
+  const { toggleCart, getTotalItems } = useCartStore();
+  const totalItems = getTotalItems();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
 
   return (
@@ -64,27 +70,34 @@ const Header = () => {
 
           {/* Action Buttons*/}
           <div className="flex items-center gap-1 sm:gap-2 shrink-0 mr-1">
-            <button className="hidden sm:flex p-1">
+            <Button variant="ghost" size="icon" className="hidden sm:flex">
               <Search size={20} />
-            </button>
-            <button className="hidden sm:flex p-1">
+            </Button>
+            <Button variant="ghost" size="icon" className="hidden sm:flex">
               <Heart size={20} />
-            </button>
+            </Button>
             <Link href="/account">
-              <button className="p-1">
+              <Button variant="ghost" size="icon">
                 <User size={20} />
-              </button>
+              </Button>
             </Link>
-            <button
-              className="relative p-1 cursor-pointer overflow-visible"
-              aria-label="Open cart"
-              type="button"
+            <Button
+              variant="ghost"
+              size="icon"
+              className="relative"
+              onClick={toggleCart}
             >
               <ShoppingBasket size={20} />
-              <span className="absolute top-0 right-0 w-4 h-4 bg-primary text-primary-foreground text-[10px] rounded-full flex items-center justify-center font-medium translate-x-1/4 -translate-y-1/4">
-                4
-              </span>
-            </button>
+              {totalItems > 0 && (
+                <motion.span
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="absolute top-0 right-0 w-4 h-4 bg-primary text-primary-foreground text-[10px] rounded-full flex items-center justify-center font-medium translate-x-1/4 -translate-y-1/4"
+                >
+                  {totalItems}
+                </motion.span>
+              )}
+            </Button>
           </div>
         </div>
       </div>
