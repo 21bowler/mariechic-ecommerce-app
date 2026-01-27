@@ -1,6 +1,8 @@
+import React from "react";
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair",
@@ -38,6 +40,7 @@ export default function RootLayout({
         className={`${playfairDisplay.variable} ${inter.variable} antialiased`}
       >
         {children}
+        <Toaster richColors position="bottom-right" />
       </body>
     </html>
   );
